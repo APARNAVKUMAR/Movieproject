@@ -1,0 +1,25 @@
+{% extends 'OutLine.html' %}
+{% block titile %}
+Login User Page
+{% endblock %}
+
+
+{% block block %}
+
+<h3>Excisting User Please login</h3>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>UserName</label>
+    <input type="text" name="username">
+    <label>Password</label>
+    <input type="password" name="password">
+  <input type="submit" value="LogIn">
+
+</form>
+
+{% if error_message %}
+<i style="color:white">Error While Register . . .  {{error_message}}</i>
+{% endif %}
+{% endblock %}
+

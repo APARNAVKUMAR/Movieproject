@@ -1,0 +1,52 @@
+{% extends 'OutLine.html' %}
+{% load static %}
+{% block title %}
+List Page
+{% endblock %}
+
+
+{% block block %}
+
+
+<h3>All Details</h3>
+<h2>Malayalam Movies</h2>
+<i>Check out the list of all latest Malayalam movies </i><br>
+
+<div class="col-md-3 m-3 bg-dark text-light">
+
+<b>Recent Edited Moviess...</b>
+   {% for i in recent_visited %}
+<li>{{i.Movie_Title}}</li>
+{% endfor %}
+
+</div>
+
+<p>page visited {{visits}}</p>
+<hr>
+<table border="1px" style="padding:40px">
+    <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Description</th>
+        <th>Poster</th>
+        <th>Edit/Delete</th>
+
+    </tr>
+    {% for i in key %}
+    <tr>
+        <td>{{i.Movie_Title|upper}}</td>
+        <td>{{i.ReleasedYear}}</td>
+        <td>{{i.Description | default:'no data'}}</td>
+    {% if i.MoviePic %}
+                <td><img src="{{ i.MoviePic.url }}" height="200px" width="200px"></td>
+            {% else %}
+                <td><img src="{% static 'img_4.jpg' %}" height="200px" width="200px"></td>
+            {% endif %}
+        <td><a href="{% url 'edit' i.id %}">Edit</a>/<a href="{% url 'delete' i.id %}">Delete</a></td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+

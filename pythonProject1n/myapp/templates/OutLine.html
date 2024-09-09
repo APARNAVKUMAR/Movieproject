@@ -1,0 +1,18 @@
+{% include 'index.html' %}
+<title>{% block title %}{% endblock %}</title>
+<style>
+ table {
+        border: 5px solid black;
+        padding: 50px;
+        margin: 40px;
+        color:white;
+        font-size:20px;
+    }
+
+    tr td, tr th {
+        padding: 20px;
+    }
+</style>
+
+<div style="height:500vh;width:100%;background-color:gray;padding:20px">
+    {% block block %}{% endblock %}</div>
